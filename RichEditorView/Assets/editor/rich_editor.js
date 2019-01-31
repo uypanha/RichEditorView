@@ -422,3 +422,8 @@ RE.getRelativeCaretYPosition = function() {
     
     return y;
 };
+
+// Returns the cursor position char to its current position onscreen.
+RE.getCurrentCaretCharPosition = function() {
+    return $('#editor').caret('pos');
+}
