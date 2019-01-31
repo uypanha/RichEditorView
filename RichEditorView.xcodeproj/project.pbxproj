@@ -10,6 +10,9 @@
 		39FC98FB1DC788A1008FE5DD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC98F91DC788A1008FE5DD /* String+Extensions.swift */; };
 		39FC98FC1DC788A1008FE5DD /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC98FA1DC788A1008FE5DD /* UIColor+Extensions.swift */; };
 		947A71A11C0F9DED00BDF9FC /* UIView+Responder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947A71A01C0F9DED00BDF9FC /* UIView+Responder.swift */; };
+		DC826AFA2202D6360092C426 /* jquery.caret.min.js in Resources */ = {isa = PBXBuildFile; fileRef = DC826AF82202D6360092C426 /* jquery.caret.min.js */; };
+		DC826AFB2202D6360092C426 /* jquery.caret.js in Resources */ = {isa = PBXBuildFile; fileRef = DC826AF92202D6360092C426 /* jquery.caret.js */; };
+		DC826AFD2202D67D0092C426 /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = DC826AFC2202D67D0092C426 /* jquery.min.js */; };
 		FBA6AAFF1AD3EC9F00721644 /* RichEditorView.h in Headers */ = {isa = PBXBuildFile; fileRef = FBA6AAFE1AD3EC9F00721644 /* RichEditorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FBA6AB051AD3EC9F00721644 /* RichEditorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA6AAF91AD3EC9F00721644 /* RichEditorView.framework */; };
 		FBA6AB0C1AD3EC9F00721644 /* RichEditorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA6AB0B1AD3EC9F00721644 /* RichEditorViewTests.swift */; };
@@ -87,6 +90,9 @@
 		39FC98F91DC788A1008FE5DD /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Extensions.swift"; path = "Classes/String+Extensions.swift"; sourceTree = "<group>"; };
 		39FC98FA1DC788A1008FE5DD /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extensions.swift"; path = "Classes/UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		947A71A01C0F9DED00BDF9FC /* UIView+Responder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Responder.swift"; path = "Classes/UIView+Responder.swift"; sourceTree = "<group>"; };
+		DC826AF82202D6360092C426 /* jquery.caret.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.caret.min.js; sourceTree = "<group>"; };
+		DC826AF92202D6360092C426 /* jquery.caret.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.caret.js; sourceTree = "<group>"; };
+		DC826AFC2202D67D0092C426 /* jquery.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
 		FBA6AAF91AD3EC9F00721644 /* RichEditorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RichEditorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA6AAFD1AD3EC9F00721644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBA6AAFE1AD3EC9F00721644 /* RichEditorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RichEditorView.h; sourceTree = "<group>"; };
@@ -175,6 +181,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC826AF72202D6280092C426 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				DC826AF92202D6360092C426 /* jquery.caret.js */,
+				DC826AF82202D6360092C426 /* jquery.caret.min.js */,
+				DC826AFC2202D67D0092C426 /* jquery.min.js */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
 		FBA6AAEF1AD3EC9F00721644 = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +274,7 @@
 		FBA6AB171AD3ED2D00721644 /* editor */ = {
 			isa = PBXGroup;
 			children = (
+				DC826AF72202D6280092C426 /* js */,
 				FBA6AB181AD3ED2D00721644 /* checking.js */,
 				FBA6AB191AD3ED2D00721644 /* normalize.css */,
 				FBA6AB1A1AD3ED2D00721644 /* rich_editor.html */,
@@ -423,14 +440,17 @@
 				FBA6AB731AD3ED2D00721644 /* outdent.png in Resources */,
 				FBA6AB591AD3ED2D00721644 /* h1.png in Resources */,
 				FBA6AB691AD3ED2D00721644 /* insert_link.png in Resources */,
+				DC826AFB2202D6360092C426 /* jquery.caret.js in Resources */,
 				FBA6AB5E1AD3ED2D00721644 /* h3@2x.png in Resources */,
 				FBA6AB781AD3ED2D00721644 /* strikethrough@2x.png in Resources */,
 				FBA6AB661AD3ED2D00721644 /* indent@2x.png in Resources */,
 				FBA6AB821AD3ED2D00721644 /* undo@2x.png in Resources */,
+				DC826AFD2202D67D0092C426 /* jquery.min.js in Resources */,
 				FBA6AB5B1AD3ED2D00721644 /* h2.png in Resources */,
 				FBA6AB7A1AD3ED2D00721644 /* subscript@2x.png in Resources */,
 				FBA6AB5F1AD3ED2D00721644 /* h4.png in Resources */,
 				FBA6AB681AD3ED2D00721644 /* insert_image@2x.png in Resources */,
+				DC826AFA2202D6360092C426 /* jquery.caret.min.js in Resources */,
 				FBA6AB651AD3ED2D00721644 /* indent.png in Resources */,
 				FBA6AB5D1AD3ED2D00721644 /* h3.png in Resources */,
 				FBA6AB631AD3ED2D00721644 /* h6.png in Resources */,

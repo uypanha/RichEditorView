@@ -341,6 +341,11 @@ import UIKit
     public func blur() {
         runJS("RE.blurFocus()")
     }
+    
+    public func currentCaretPosition() {
+        print("Y: \(relativeCaretYPosition)")
+        print("Position: \(caretCharPosition)")
+    }
 
     /// Runs some JavaScript on the UIWebView and returns the result
     /// If there is no result, returns an empty string
@@ -445,7 +450,12 @@ import UIKit
         let string = runJS("RE.getRelativeCaretYPosition();")
         return Int(string) ?? 0
     }
-
+    
+    private var caretCharPosition: Int {
+        let string = runJS("RE.caretCharPosition();")
+        return Int(string) ?? 0
+    }
+    
     private func updateHeight() {
         let heightString = runJS("document.getElementById('editor').clientHeight;")
         let height = Int(heightString) ?? 0
