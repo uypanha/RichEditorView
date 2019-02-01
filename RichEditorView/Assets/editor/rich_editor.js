@@ -17,6 +17,10 @@
 
 var RE = {};
 
+RE.mentionUsers = [];
+RE.lookupKey = "key";
+RE.menuItemKeyToDisplay = "value";
+
 window.onload = function() {
     RE.callback("ready");
     
@@ -425,23 +429,51 @@ RE.getRelativeCaretYPosition = function() {
     return y;
 };
 
-// Returns the cursor position char to its current position onscreen
+RE.setMentionUsers = function(users) {
+    if (Array.isArray(users)) {
+        RE.mentionUsers = users;
+    }
+}
+
+RE.setLookUpKey = function(key) {
+    if (key === string) {
+        RE.lookupKey = key;
+    }
+}
+
+RE.setMenuItemToDisplayKey = function(key) {
+    if (typeof key === 'string' || key instanceof String) {
+        RE.menuItemKeyToDisplay = key;
+    }
+}
+
 RE.prepareAtWho = function() {
     
     var tribute = new Tribute({
-        values: [
-            {key: 'Jordan Humphreys', value: 'Jordan Humphreys', email: 'getstarted@zurb.com'},
-            {key: 'Sir Walter Riley', value: 'Sir Walter Riley', email: 'getstarted+riley@zurb.com'}
-        ],
+        values: function (text, cb) {
+            RE.remoteSearch(text, users => cb(users));
+        },
         selectTemplate: function (item) {
             if (typeof item === 'undefined') return null;
             if (this.range.isContentEditable(this.current.element)) {
-            return '<span contenteditable="false"><a href="#view-profile-'+ item.original.email +'" target="_blank" title="' + item.original.email + '">' + item.original.value + '</a></span>';
+                return '<span contenteditable="false"><a href="#view-profile-'+ item.original.email +'" target="_blank" title="' + item.original.email + '">' + item.original.value + '</a></span>';
             }
                               
             return '@' + item.original.value;
-        }
+        },
+        menuItemTemplate: function (item) {
+            return item.original[RE.menuItemKeyToDisplay];
+        },
+        lookup: RE.lookupKey || 'key'
     });
     
     tribute.attach(RE.editor);
+}
+
+RE.remoteSearch = function(text, cb) {
+    if (RE.mentionUsers == undefined || RE.mentionUsers.length == 0) {
+        cb([]);
+    } else {
+        cb(RE.mentionUsers);
+    }
 }

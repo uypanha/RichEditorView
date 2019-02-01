@@ -12,6 +12,7 @@
 		947A71A11C0F9DED00BDF9FC /* UIView+Responder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947A71A01C0F9DED00BDF9FC /* UIView+Responder.swift */; };
 		DC03D5D122033481002C3577 /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = DC03D5CC22033481002C3577 /* jquery.min.js */; };
 		DC660FFD2203FDE1009A520D /* tribute in Resources */ = {isa = PBXBuildFile; fileRef = DC660FFC2203FDE1009A520D /* tribute */; };
+		DC6610012204457A009A520D /* Mention+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6610002204457A009A520D /* Mention+Delegation.swift */; };
 		FBA6AAFF1AD3EC9F00721644 /* RichEditorView.h in Headers */ = {isa = PBXBuildFile; fileRef = FBA6AAFE1AD3EC9F00721644 /* RichEditorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FBA6AB051AD3EC9F00721644 /* RichEditorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA6AAF91AD3EC9F00721644 /* RichEditorView.framework */; };
 		FBA6AB0C1AD3EC9F00721644 /* RichEditorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA6AB0B1AD3EC9F00721644 /* RichEditorViewTests.swift */; };
@@ -91,6 +92,7 @@
 		947A71A01C0F9DED00BDF9FC /* UIView+Responder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Responder.swift"; path = "Classes/UIView+Responder.swift"; sourceTree = "<group>"; };
 		DC03D5CC22033481002C3577 /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
 		DC660FFC2203FDE1009A520D /* tribute */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tribute; sourceTree = "<group>"; };
+		DC6610002204457A009A520D /* Mention+Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mention+Delegation.swift"; sourceTree = "<group>"; };
 		FBA6AAF91AD3EC9F00721644 /* RichEditorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RichEditorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA6AAFD1AD3EC9F00721644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBA6AAFE1AD3EC9F00721644 /* RichEditorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RichEditorView.h; sourceTree = "<group>"; };
@@ -179,6 +181,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC660FFF22044556009A520D /* Mention */ = {
+			isa = PBXGroup;
+			children = (
+				DC6610002204457A009A520D /* Mention+Delegation.swift */,
+			);
+			path = Mention;
+			sourceTree = "<group>";
+		};
 		DC826AF72202D6280092C426 /* js */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +256,7 @@
 		FBA6AB151AD3ED1700721644 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DC660FFF22044556009A520D /* Mention */,
 				FBA6AB831AD3ED3C00721644 /* CJWWebView+HackishAccessoryHiding.h */,
 				FBA6AB841AD3ED3C00721644 /* CJWWebView+HackishAccessoryHiding.m */,
 				FBA6AB851AD3ED3C00721644 /* RichEditorOptionItem.swift */,
@@ -507,6 +518,7 @@
 				FBA6AB8B1AD3ED3C00721644 /* RichEditorToolbar.swift in Sources */,
 				FBA6AB891AD3ED3C00721644 /* CJWWebView+HackishAccessoryHiding.m in Sources */,
 				FBA6AB8C1AD3ED3C00721644 /* RichEditorView.swift in Sources */,
+				DC6610012204457A009A520D /* Mention+Delegation.swift in Sources */,
 				39FC98FC1DC788A1008FE5DD /* UIColor+Extensions.swift in Sources */,
 				39FC98FB1DC788A1008FE5DD /* String+Extensions.swift in Sources */,
 				947A71A11C0F9DED00BDF9FC /* UIView+Responder.swift in Sources */,

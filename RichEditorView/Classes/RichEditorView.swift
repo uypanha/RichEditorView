@@ -7,7 +7,10 @@
 
 import UIKit
 
-/// RichEditorDelegate defines callbacks for the delegate of the RichEditorView
+// RichEditorDataSource defines callbacks for the datasource of the RichEditorView
+public protocol RichEditorDataSource: class {}
+
+// RichEditorDelegate defines callbacks for the delegate of the RichEditorView
 @objc public protocol RichEditorDelegate: class {
 
     /// Called when the inner height of the text being displayed changes
@@ -41,6 +44,15 @@ import UIKit
 
     // MARK: Public Properties
 
+    /// The datasource that will receive data when certian actions are needed.
+    open weak var datasource: RichEditorDataSource? {
+        didSet {
+            if self.isEditorLoaded {
+                self.reloadMentionPeople()
+            }
+        }
+    }
+    
     /// The delegate that will receive callbacks when certain actions are completed.
     open weak var delegate: RichEditorDelegate?
 
@@ -341,6 +353,8 @@ import UIKit
     public func blur() {
         runJS("RE.blurFocus()")
     }
+    
+    
 
     /// Runs some JavaScript on the UIWebView and returns the result
     /// If there is no result, returns an empty string
@@ -415,7 +429,6 @@ import UIKit
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-
 
     // MARK: - Private Implementation Details
 
@@ -498,6 +511,7 @@ import UIKit
                 placeholder = placeholderText
                 lineHeight = innerLineHeight
                 delegate?.richEditorDidLoad?(self)
+                self.reloadMentionPeople()
             }
             updateHeight()
         }
@@ -554,4 +568,44 @@ import UIKit
         return true
     }
 
+}
+
+// MARK: - Mention People handlers
+extension RichEditorView {
+    
+    private func setMetionUsers(_ users: [MentionCodable]) {
+        let jsonEncoder = JSONEncoder()
+        var jsonData: [String] = []
+        users.forEach { people in
+            if let peopleData = try? jsonEncoder.encode(people), let json = String(data: peopleData, encoding: String.Encoding.utf8) {
+                jsonData.append(json)
+            }
+        }
+        
+        if let data = try? JSONSerialization.data(withJSONObject: jsonData, options: .prettyPrinted), let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
+            runJS("RE.setAtUsers(\(string))")
+        }
+    }
+    
+    private func setLookUpKey(_ key: String?) {
+        if let key = key {
+            runJS("RE.setLookUpKey('\(key)')")
+        } else {
+            runJS("RE.setLookUpKey(undefined)")
+        }
+    }
+    
+    private func setMenuItemToDisplayKey(_ menuItemToDisplayKey: String) {
+        runJS("RE.setMenuItemToDisplayKey('\(menuItemToDisplayKey)')")
+    }
+    
+    func reloadMentionPeople() {
+        if let datasource = self.datasource as? RichEditorMentionPeopleDataSource {
+            
+            self.setMetionUsers(datasource.richEditorMentionPeople(self))
+            self.setLookUpKey(datasource.richEditorKeyToLookUp(self))
+            self.setMenuItemToDisplayKey("valueToDisplay")
+            runJS("RE.prepareAtWho()")
+        }
+    }
 }
