@@ -11,7 +11,7 @@ open class MentionCodable: Encodable {
     
     var valueToDisplay: String?
     
-    open init(_ valueToDisplay: String? = nil) {
+    public init(_ valueToDisplay: String? = nil) {
         self.valueToDisplay = valueToDisplay
     }
 }
