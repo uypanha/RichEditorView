@@ -436,7 +436,7 @@ RE.prepareAtWho = function() {
         selectTemplate: function (item) {
             if (typeof item === 'undefined') return null;
             if (this.range.isContentEditable(this.current.element)) {
-            return return '<span contenteditable="false"><a href="#view-profile-'+ item.original.email +'" target="_blank" title="' + item.original.email + '">' + item.original.value + '</a></span>';
+            return '<span contenteditable="false"><a href="#view-profile-'+ item.original.email +'" target="_blank" title="' + item.original.email + '">' + item.original.value + '</a></span>';
             }
                               
             return '@' + item.original.value;
