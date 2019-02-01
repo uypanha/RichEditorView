@@ -423,7 +423,23 @@ RE.getRelativeCaretYPosition = function() {
     return y;
 };
 
-// Returns the cursor position char to its current position onscreen.
-RE.getCurrentCaretCharPosition = function() {
-    return $('#editor').caret('pos');
+// Returns the cursor position char to its current position onscreen
+RE.prepareAtWho = function() {
+    
+    var tribute = new Tribute({
+        values: [
+            {key: 'Jordan Humphreys', value: 'Jordan Humphreys', email: 'getstarted@zurb.com'},
+            {key: 'Sir Walter Riley', value: 'Sir Walter Riley', email: 'getstarted+riley@zurb.com'}
+        ],
+        selectTemplate: function (item) {
+            if (typeof item === 'undefined') return null;
+            if (this.range.isContentEditable(this.current.element)) {
+            return '<a href="#view-profile-'+ item.original.email +'" target="_blank" title="' + item.original.email + '">' + item.original.value + '</a></span>';
+            }
+                              
+            return '@' + item.original.value;
+        }
+    });
+    
+    tribute.attach(RE.editor);
 }
