@@ -19,6 +19,8 @@ var RE = {};
 
 window.onload = function() {
     RE.callback("ready");
+    
+    RE.prepareAtWho();
 };
 
 RE.editor = document.getElementById('editor');
