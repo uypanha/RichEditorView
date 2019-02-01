@@ -7,13 +7,10 @@
 
 import Foundation
 
-public class MentionCodable: Codable {
+public protocol MentionCodable: Codable {
     
-    var valueToDisplay: String?
+    var valueToDisplay: String? { get set }
     
-    init(_ valueToDisplay: String? = nil) {
-        self.valueToDisplay = valueToDisplay
-    }
 }
 
 public protocol RichEditorMentionPeopleDataSource: RichEditorDataSource {
