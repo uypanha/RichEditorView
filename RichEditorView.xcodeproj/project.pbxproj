@@ -181,14 +181,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DC660FFF22044556009A520D /* Mention */ = {
-			isa = PBXGroup;
-			children = (
-				DC6610002204457A009A520D /* Mention+Delegation.swift */,
-			);
-			path = Mention;
-			sourceTree = "<group>";
-		};
 		DC826AF72202D6280092C426 /* js */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,8 +248,8 @@
 		FBA6AB151AD3ED1700721644 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DC660FFF22044556009A520D /* Mention */,
 				FBA6AB831AD3ED3C00721644 /* CJWWebView+HackishAccessoryHiding.h */,
+				DC6610002204457A009A520D /* Mention+Delegation.swift */,
 				FBA6AB841AD3ED3C00721644 /* CJWWebView+HackishAccessoryHiding.m */,
 				FBA6AB851AD3ED3C00721644 /* RichEditorOptionItem.swift */,
 				FBA6AB861AD3ED3C00721644 /* RichEditorToolbar.swift */,

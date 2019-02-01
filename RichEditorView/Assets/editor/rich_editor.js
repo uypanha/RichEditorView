@@ -23,8 +23,6 @@ RE.menuItemKeyToDisplay = "value";
 
 window.onload = function() {
     RE.callback("ready");
-    
-    RE.prepareAtWho();
 };
 
 RE.editor = document.getElementById('editor');
