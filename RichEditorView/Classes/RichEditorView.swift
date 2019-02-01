@@ -341,11 +341,6 @@ import UIKit
     public func blur() {
         runJS("RE.blurFocus()")
     }
-    
-    public func currentCaretPosition() {
-        print("Y: \(relativeCaretYPosition)")
-        print("Position: \(caretCharPosition)")
-    }
 
     /// Runs some JavaScript on the UIWebView and returns the result
     /// If there is no result, returns an empty string
