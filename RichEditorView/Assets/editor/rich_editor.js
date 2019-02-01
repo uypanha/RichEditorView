@@ -436,7 +436,7 @@ RE.setMentionUsers = function(users) {
 }
 
 RE.setLookUpKey = function(key) {
-    if (key === string) {
+    if (typeof key === 'string' || key instanceof String) {
         RE.lookupKey = key;
     }
 }
