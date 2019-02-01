@@ -20,6 +20,7 @@ var RE = {};
 RE.mentionUsers = [];
 RE.lookupKey = "key";
 RE.menuItemKeyToDisplay = "value";
+RE.selectTemplateKey = "template";
 
 window.onload = function() {
     RE.callback("ready");
@@ -428,6 +429,7 @@ RE.getRelativeCaretYPosition = function() {
 };
 
 RE.setMentionUsers = function(users) {
+    console.log(users);
     if (Array.isArray(users)) {
         RE.mentionUsers = users;
     }
@@ -445,6 +447,12 @@ RE.setMenuItemToDisplayKey = function(key) {
     }
 }
 
+RE.setSelectTemplateKey = function(key) {
+    if (typeof key === 'string' || key instanceof String) {
+        RE.selectTemplateKey = key
+    }
+}
+
 RE.prepareAtWho = function() {
     
     var tribute = new Tribute({
@@ -454,10 +462,10 @@ RE.prepareAtWho = function() {
         selectTemplate: function (item) {
             if (typeof item === 'undefined') return null;
             if (this.range.isContentEditable(this.current.element)) {
-                return '<span contenteditable="false"><a href="#view-profile-'+ item.original.email +'" target="_blank" title="' + item.original.email + '">' + item.original.value + '</a></span>';
+                return '<span contenteditable="false">' + item.original[RE.selectTemplateKey] + '</span>';
             }
                               
-            return '@' + item.original.value;
+            return '@' + item.original.[RE.menuItemKeyToDisplay];
         },
         menuItemTemplate: function (item) {
             return item.original[RE.menuItemKeyToDisplay];

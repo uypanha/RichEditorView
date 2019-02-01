@@ -573,18 +573,19 @@ public protocol RichEditorDataSource: class {}
 // MARK: - Mention People handlers
 extension RichEditorView {
     
-    private func setMetionUsers(_ users: [MentionCodable]) {
+    private func setMetionUsers<T>(_ users: [T]) where T : Encodable {
         let jsonEncoder = JSONEncoder()
-        var jsonData: [String] = []
+        var jsonData: String = "["
         users.forEach { people in
             if let peopleData = try? jsonEncoder.encode(people), let json = String(data: peopleData, encoding: String.Encoding.utf8) {
-                jsonData.append(json)
+                jsonData += json + ","
             }
         }
-        
-        if let data = try? JSONSerialization.data(withJSONObject: jsonData, options: .prettyPrinted), let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-            runJS("RE.setAtUsers(\(string))")
+        if users.count > 0 {
+            _ = jsonData.popLast()
         }
+        jsonData += "]"
+        runJS("RE.setMentionUsers(\(jsonData))")
     }
     
     private func setLookUpKey(_ key: String?) {
@@ -599,12 +600,17 @@ extension RichEditorView {
         runJS("RE.setMenuItemToDisplayKey('\(menuItemToDisplayKey)')")
     }
     
+    private func setSelectTemplateKey(_ setSelectTemplateKey: String) {
+        runJS("RE.setSelectTemplateKey('\(setSelectTemplateKey)')")
+    }
+    
     func reloadMentionPeople() {
         if let datasource = self.datasource as? RichEditorMentionPeopleDataSource {
             
             self.setMetionUsers(datasource.richEditorMentionPeople(self))
             self.setLookUpKey(datasource.richEditorKeyToLookUp(self))
             self.setMenuItemToDisplayKey("valueToDisplay")
+            self.setSelectTemplateKey("valueToDisplay")
             runJS("RE.prepareAtWho()")
         }
     }

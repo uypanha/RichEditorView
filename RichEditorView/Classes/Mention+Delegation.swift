@@ -18,7 +18,7 @@ open class MentionCodable: Encodable {
 
 public protocol RichEditorMentionPeopleDataSource: RichEditorDataSource {
     
-    func richEditorMentionPeople(_ editor: RichEditorView) -> [MentionCodable]
+    func richEditorMentionPeople<T>(_ editor: RichEditorView) -> [T] where T: MentionCodable
     
     func richEditorKeyToLookUp(_ editor: RichEditorView) -> String?
     
