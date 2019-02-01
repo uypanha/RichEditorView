@@ -7,11 +7,11 @@
 
 import Foundation
 
-open class MentionCodable: Codable {
+open class MentionCodable: Encodable {
     
     var valueToDisplay: String?
     
-    init(_ valueToDisplay: String? = nil) {
+    open init(_ valueToDisplay: String? = nil) {
         self.valueToDisplay = valueToDisplay
     }
 }
