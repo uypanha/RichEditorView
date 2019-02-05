@@ -529,52 +529,56 @@ RE.initEvents = function() {
 
 }
 
-// Checking Editing selection 
+// Checking Editing selection
+RE.isCommandEnabled = function(commandName) {
+    return document.queryCommandState(commandName);
+}
+
 RE.enabledEditingItems = function(e) {
 
     console.log('enabledEditingItems');
     var items = [];
 
-    if (RE.editor.isCommandEnabled('bold')) {
+    if (RE.isCommandEnabled('bold')) {
         items.push('bold');
     }
-    if (RE.editor.isCommandEnabled('bold')) {
+    if (RE.isCommandEnabled('bold')) {
         items.push('bold');
     }
-    if (RE.editor.isCommandEnabled('italic')) {
+    if (RE.isCommandEnabled('italic')) {
         items.push('italic');
     }
-    if (RE.editor.isCommandEnabled('subscript')) {
+    if (RE.isCommandEnabled('subscript')) {
         items.push('subscript');
     }
-    if (RE.editor.isCommandEnabled('superscript')) {
+    if (RE.isCommandEnabled('superscript')) {
         items.push('superscript');
     }
-    if (RE.editor.isCommandEnabled('strikeThrough')) {
+    if (RE.isCommandEnabled('strikeThrough')) {
         items.push('strikeThrough');
     }
-    if (RE.editor.isCommandEnabled('underline')) {
+    if (RE.isCommandEnabled('underline')) {
         items.push('underline');
     }
-    if (RE.editor.isCommandEnabled('insertOrderedList')) {
+    if (RE.isCommandEnabled('insertOrderedList')) {
         items.push('orderedList');
     }
-    if (RE.editor.isCommandEnabled('insertUnorderedList')) {
+    if (RE.isCommandEnabled('insertUnorderedList')) {
         items.push('unorderedList');
     }
-    if (RE.editor.isCommandEnabled('justifyCenter')) {
+    if (RE.isCommandEnabled('justifyCenter')) {
         items.push('justifyCenter');
     }
-    if (RE.editor.isCommandEnabled('justifyFull')) {
+    if (RE.isCommandEnabled('justifyFull')) {
         items.push('justifyFull');
     }
-    if (RE.editor.isCommandEnabled('justifyLeft')) {
+    if (RE.isCommandEnabled('justifyLeft')) {
         items.push('justifyLeft');
     }
-    if (RE.editor.isCommandEnabled('justifyRight')) {
+    if (RE.isCommandEnabled('justifyRight')) {
         items.push('justifyRight');
     }
-    if (RE.editor.isCommandEnabled('insertHorizontalRule')) {
+    if (RE.isCommandEnabled('insertHorizontalRule')) {
         items.push('horizontalRule');
     }
     var formatBlock = document.queryCommandValue('formatBlock');
@@ -587,7 +591,7 @@ RE.enabledEditingItems = function(e) {
     // Use jQuery to figure out those that are not supported
     if (typeof(e) != "undefined") {
         // The target element
-        var s = RE.editor.getSelectedNode();
+        var s = RE.getSelectedNode();
         var t = $(s);
         var nodeName = e.target.nodeName.toLowerCase();
         
@@ -604,7 +608,7 @@ RE.enabledEditingItems = function(e) {
 		
         // Link
         if (nodeName == 'a') {
-            RE.editor.currentEditingLink = t;
+//            RE.editor.currentEditingLink = t;
             var title = t.attr('title');
             items.push('link:'+t.attr('href'));
             if (t.attr('title') !== undefined) {
@@ -612,7 +616,7 @@ RE.enabledEditingItems = function(e) {
             }
             
         } else {
-            RE.editor.currentEditingLink = null;
+//            RE.editor.currentEditingLink = null;
         }
         // Blockquote
         if (nodeName == 'blockquote') {
@@ -620,14 +624,14 @@ RE.enabledEditingItems = function(e) {
         }
         // Image
         if (nodeName == 'img') {
-            RE.editor.currentEditingImage = t;
+//            RE.editor.currentEditingImage = t;
             items.push('image:'+t.attr('src'));
             if (t.attr('alt') !== undefined) {
                 items.push('image-alt:'+t.attr('alt'));
             }
             
         } else {
-            RE.editor.currentEditingImage = null;
+//            RE.editor.currentEditingImage = null;
         }
     }
 
@@ -636,3 +640,20 @@ RE.enabledEditingItems = function(e) {
         RE.callback("selectedItems/" + items.join(','));
     }
 }
+
+RE.getSelectedNode = function() {
+    var node,selection;
+    if (window.getSelection) {
+        selection = getSelection();
+        node = selection.anchorNode;
+    }
+    if (!node && document.selection) {
+        selection = document.selection
+        var range = selection.getRangeAt ? selection.getRangeAt(0) : selection.createRange();
+        node = range.commonAncestorContainer ? range.commonAncestorContainer :
+        range.parentElement ? range.parentElement() : range.item(0);
+    }
+    if (node) {
+        return (node.nodeName == "#text" ? node.parentNode : node);
+    }
+};

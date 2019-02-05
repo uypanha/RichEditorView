@@ -95,6 +95,9 @@ public protocol RichEditorDataSource: class {}
         }
     }
     
+    /// Array holding the enabled editor items
+    private var editorItemsEnabled: [String] = []
+    
     /// The value we hold in order to be able to set the line height before the JS completely loads.
     private var innerLineHeight: Int = 28
     
@@ -540,6 +543,9 @@ public protocol RichEditorDataSource: class {}
             let range = method.range(of: actionPrefix)!
             let action = method.replacingCharacters(in: range, with: "")
             delegate?.richEditor?(self, handle: action)
+        } else if method.hasPrefix("selectedItems/") {
+            let className = method.replacingOccurrences(of: "selectedItems/", with: "")
+            self.updateToolBarWithButtonName(className)
         }
     }
     
@@ -624,3 +630,18 @@ extension RichEditorView {
         }
     }
 }
+
+// MARK: - ToolBar Tools
+extension RichEditorView {
+    
+    func updateToolBarWithButtonName(_ name: String) {
+        
+        // Items that are enabled
+        let itemNames = name.split(separator: ",")
+        
+        self.editorItemsEnabled = itemNames.map { String($0) }
+        // Highlight items
+        (self.inputAccessoryView as? RichEditorToolbar)?.updateToolBar(with: self.editorItemsEnabled)
+    }
+}
+

@@ -10,14 +10,20 @@ import UIKit
 /// A RichEditorOption object is an object that can be displayed in a RichEditorToolbar.
 /// This protocol is proviced to allow for custom actions not provided in the RichEditorOptions enum.
 public protocol RichEditorOption {
-
+    
     /// The image to be displayed in the RichEditorToolbar.
     var image: UIImage? { get }
-
+    
     /// The title of the item.
     /// If `image` is nil, this will be used for display in the RichEditorToolbar.
     var title: String { get }
-
+    
+    /// The key of the item, and this will allow to changed the button tint color
+    var key: RichEditorOptionKey { get }
+    
+    /// The boolean value to tell that the button bar is ignoring highlighting
+    var ignoreHighLight: Bool { get }
+    
     /// The action to be evoked when the action is tapped
     /// - parameter editor: The RichEditorToolbar that the RichEditorOption was being displayed in when tapped.
     ///                     Contains a reference to the `editor` RichEditorView to perform actions on.
@@ -27,20 +33,28 @@ public protocol RichEditorOption {
 /// RichEditorOptionItem is a concrete implementation of RichEditorOption.
 /// It can be used as a configuration object for custom objects to be shown on a RichEditorToolbar.
 public struct RichEditorOptionItem: RichEditorOption {
-
+    
     /// The image that should be shown when displayed in the RichEditorToolbar.
     public var image: UIImage?
-
+    
     /// If an `itemImage` is not specified, this is used in display
     public var title: String
-
+    
+    /// The key of the item, and this will allow to changed the button tint color
+    public var key: RichEditorOptionKey
+    
+    /// The boolean value to tell that the button bar is ignoring highlighting
+    public var ignoreHighLight: Bool
+    
     /// The action to be performed when tapped
     public var handler: ((RichEditorToolbar) -> Void)
-
-    public init(image: UIImage?, title: String, action: @escaping ((RichEditorToolbar) -> Void)) {
+    
+    public init(image: UIImage?, key: RichEditorOptionKey, ignoreHightLight: Bool = false, title: String, action: @escaping ((RichEditorToolbar) -> Void)) {
         self.image = image
+        self.key = key
         self.title = title
         self.handler = action
+        self.ignoreHighLight = ignoreHightLight
     }
     
     // MARK: RichEditorOption
@@ -52,7 +66,7 @@ public struct RichEditorOptionItem: RichEditorOption {
 
 /// RichEditorOptions is an enum of standard editor actions
 public enum RichEditorDefaultOption: RichEditorOption {
-
+    
     case clear
     case undo
     case redo
@@ -84,9 +98,9 @@ public enum RichEditorDefaultOption: RichEditorOption {
         .indent, outdent, orderedList, unorderedList,
         .alignLeft, .alignCenter, .alignRight, .image, .link
     ]
-
+    
     // MARK: RichEditorOption
-
+    
     public var image: UIImage? {
         var name = ""
         switch self {
@@ -143,6 +157,41 @@ public enum RichEditorDefaultOption: RichEditorOption {
         }
     }
     
+    public var key: RichEditorOptionKey {
+        switch self {
+        case .clear: return .clear
+        case .undo: return .undo
+        case .redo: return .redo
+        case .bold: return .bold
+        case .italic: return .italic
+        case .subscript: return .subscript
+        case .superscript: return .superscript
+        case .strike: return .strike
+        case .underline: return .underline
+        case .textColor: return .textColor
+        case .textBackgroundColor: return .textBackgroundColor
+        case .header(let h): return .header
+        case .indent: return .indent
+        case .outdent: return .outdent
+        case .orderedList: return .orderedList
+        case .unorderedList: return .unorderedList
+        case .alignLeft: return .alignLeft
+        case .alignCenter: return .alignCenter
+        case .alignRight: return .alignRight
+        case .image: return .image
+        case .link: return .link
+        }
+    }
+    
+    public var ignoreHighLight: Bool {
+        switch self {
+        case .alignLeft, .undo, .clear:
+            return true
+        default:
+            return false
+        }
+    }
+    
     public func action(_ toolbar: RichEditorToolbar) {
         switch self {
         case .clear: toolbar.editor?.removeFormat()
@@ -168,4 +217,30 @@ public enum RichEditorDefaultOption: RichEditorOption {
         case .link: toolbar.delegate?.richEditorToolbarInsertLink?(toolbar)
         }
     }
+}
+
+// MAKR: - RichEditor Option Key
+public enum RichEditorOptionKey: String {
+    case clear = "clear"
+    case undo = "undo"
+    case redo = "redo"
+    case bold = "bold"
+    case italic = "italic"
+    case `subscript` = "subscript"
+    case superscript = "superscript"
+    case strike = "strikeThrough"
+    case underline = "underline"
+    case textColor = "textColor"
+    case textBackgroundColor = "backgroundColor"
+    case header = "header"
+    case indent = "indent"
+    case outdent = "outdent"
+    case orderedList = "orderedList"
+    case unorderedList = "unorderedList"
+    case alignLeft = "justifyLeft"
+    case alignCenter = "justifyCenter"
+    case alignRight = "justifyRight"
+    case image = "image"
+    case link = "link"
+    case none = "none"
 }
