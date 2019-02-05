@@ -461,11 +461,11 @@ RE.prepareAtWho = function() {
         },
         selectTemplate: function (item) {
             if (typeof item === 'undefined') return null;
-            if (this.range.isContentEditable(this.current.element)) {
+            if (this.range.isContentEditable(this.current.element) && !(item.original[RE.selectTemplateKey] === 'undefined')) {
                 return '<span contenteditable="false">' + item.original[RE.selectTemplateKey] + '</span>';
             }
-                              
-            return '@' + item.original.[RE.menuItemKeyToDisplay];
+
+            return '<span contenteditable="false">@' + item.original[RE.menuItemKeyToDisplay] + '</span>';
         },
         menuItemTemplate: function (item) {
             return item.original[RE.menuItemKeyToDisplay];

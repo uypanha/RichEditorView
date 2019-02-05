@@ -7,19 +7,15 @@
 
 import Foundation
 
-open class MentionCodable: Encodable {
-    
-    var valueToDisplay: String?
-    
-    public init(_ valueToDisplay: String? = nil) {
-        self.valueToDisplay = valueToDisplay
-    }
-}
-
 public protocol RichEditorMentionPeopleDataSource: RichEditorDataSource {
     
-    func richEditorMentionPeople<T>(_ editor: RichEditorView) -> [T] where T: MentionCodable
+    func numberOfItems(_ editor: RichEditorView) -> Int
+    
+    func richEditor(_ editor: RichEditorView, jsonUserDataFor index: Int) -> [String: Any]
     
     func richEditorKeyToLookUp(_ editor: RichEditorView) -> String?
     
+    func richEditor(_ editor: RichEditorView, htmlItemToDisplayFor index: Int) -> String?
+    
+    func richEditor(_ editor: RichEditorView, selectedHtmlTemplateFor index: Int) -> String?
 }
