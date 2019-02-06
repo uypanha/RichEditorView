@@ -5,7 +5,7 @@
 //  Created by Phanha Uy on 2/6/19.
 //
 
-import Foundation
+import UIKit
 
 public class RichEditorToolbarAppearance {
     
