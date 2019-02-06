@@ -96,7 +96,7 @@ public protocol RichEditorDataSource: class {}
     }
     
     /// Array holding the enabled editor items
-    private var editorItemsEnabled: [String] = []
+    fileprivate var editorItemsEnabled: [String] = []
     
     /// The value we hold in order to be able to set the line height before the JS completely loads.
     private var innerLineHeight: Int = 28
@@ -632,9 +632,9 @@ extension RichEditorView {
 }
 
 // MARK: - ToolBar Tools
-extension RichEditorView {
+public extension RichEditorView {
     
-    func updateToolBarWithButtonName(_ name: String) {
+    fileprivate func updateToolBarWithButtonName(_ name: String) {
         
         // Items that are enabled
         let itemNames = name.split(separator: ",")

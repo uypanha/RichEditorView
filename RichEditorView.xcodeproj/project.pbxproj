@@ -11,6 +11,7 @@
 		39FC98FC1DC788A1008FE5DD /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC98FA1DC788A1008FE5DD /* UIColor+Extensions.swift */; };
 		947A71A11C0F9DED00BDF9FC /* UIView+Responder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947A71A01C0F9DED00BDF9FC /* UIView+Responder.swift */; };
 		DC03D5D122033481002C3577 /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = DC03D5CC22033481002C3577 /* jquery.min.js */; };
+		DC14E772220AC91700D5143A /* RichEditorToolbarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC14E771220AC91700D5143A /* RichEditorToolbarAppearance.swift */; };
 		DC660FFD2203FDE1009A520D /* tribute in Resources */ = {isa = PBXBuildFile; fileRef = DC660FFC2203FDE1009A520D /* tribute */; };
 		DC661003220450B3009A520D /* Mention+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661002220450B3009A520D /* Mention+Delegation.swift */; };
 		FBA6AAFF1AD3EC9F00721644 /* RichEditorView.h in Headers */ = {isa = PBXBuildFile; fileRef = FBA6AAFE1AD3EC9F00721644 /* RichEditorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -91,6 +92,7 @@
 		39FC98FA1DC788A1008FE5DD /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extensions.swift"; path = "Classes/UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		947A71A01C0F9DED00BDF9FC /* UIView+Responder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Responder.swift"; path = "Classes/UIView+Responder.swift"; sourceTree = "<group>"; };
 		DC03D5CC22033481002C3577 /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
+		DC14E771220AC91700D5143A /* RichEditorToolbarAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RichEditorToolbarAppearance.swift; path = Classes/RichEditorToolbarAppearance.swift; sourceTree = "<group>"; };
 		DC660FFC2203FDE1009A520D /* tribute */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tribute; sourceTree = "<group>"; };
 		DC661002220450B3009A520D /* Mention+Delegation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Mention+Delegation.swift"; path = "Classes/Mention+Delegation.swift"; sourceTree = "<group>"; };
 		FBA6AAF91AD3EC9F00721644 /* RichEditorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RichEditorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,11 +250,12 @@
 		FBA6AB151AD3ED1700721644 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DC661002220450B3009A520D /* Mention+Delegation.swift */,
 				FBA6AB831AD3ED3C00721644 /* CJWWebView+HackishAccessoryHiding.h */,
 				FBA6AB841AD3ED3C00721644 /* CJWWebView+HackishAccessoryHiding.m */,
+				DC661002220450B3009A520D /* Mention+Delegation.swift */,
 				FBA6AB851AD3ED3C00721644 /* RichEditorOptionItem.swift */,
 				FBA6AB861AD3ED3C00721644 /* RichEditorToolbar.swift */,
+				DC14E771220AC91700D5143A /* RichEditorToolbarAppearance.swift */,
 				FBA6AB871AD3ED3C00721644 /* RichEditorView.swift */,
 				39FC98F91DC788A1008FE5DD /* String+Extensions.swift */,
 				39FC98FA1DC788A1008FE5DD /* UIColor+Extensions.swift */,
@@ -514,6 +517,7 @@
 				39FC98FC1DC788A1008FE5DD /* UIColor+Extensions.swift in Sources */,
 				39FC98FB1DC788A1008FE5DD /* String+Extensions.swift in Sources */,
 				947A71A11C0F9DED00BDF9FC /* UIView+Responder.swift in Sources */,
+				DC14E772220AC91700D5143A /* RichEditorToolbarAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

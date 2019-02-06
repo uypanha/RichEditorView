@@ -185,7 +185,7 @@ public enum RichEditorDefaultOption: RichEditorOption {
     
     public var ignoreHighLight: Bool {
         switch self {
-        case .alignLeft, .undo, .clear:
+        case .alignLeft, .undo, .clear, .textColor:
             return true
         default:
             return false

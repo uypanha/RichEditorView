@@ -629,7 +629,6 @@ RE.enabledEditingItems = function(e) {
             if (t.attr('alt') !== undefined) {
                 items.push('image-alt:'+t.attr('alt'));
             }
-            
         } else {
 //            RE.editor.currentEditingImage = null;
         }

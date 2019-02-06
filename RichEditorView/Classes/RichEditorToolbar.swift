@@ -57,6 +57,8 @@ import UIKit
 /// RichEditorToolbar is UIView that contains the toolbar for actions that can be performed on a RichEditorView
 @objcMembers open class RichEditorToolbar: UIView {
     
+    public static let appearance = RichEditorToolbarAppearance()
+    
     /// The delegate to receive events that cannot be automatically completed
     open weak var delegate: RichEditorToolbarDelegate?
     
@@ -77,7 +79,7 @@ import UIKit
     }
     
     private var toolbarScroll: UIScrollView
-    private var toolbar: UIToolbar
+    fileprivate var toolbar: UIToolbar
     private var backgroundToolbar: UIToolbar
     
     public override init(frame: CGRect) {
@@ -163,15 +165,17 @@ import UIKit
 }
 
 // MARK: - Enable Editing
-extension RichEditorToolbar {
+public extension RichEditorToolbar {
     
     func updateToolBar(with itemNames: [String]) {
         let itemKeys = itemNames.map { RichEditorOptionKey(rawValue: $0) }
         for item: RichBarButtonItem in self.toolbar.items as? [RichBarButtonItem] ?? [] {
             if !item.ignoreHightLight && itemKeys.contains(item.key) {
-                item.tintColor = UIColor.red
+                item.tintColor = RichEditorToolbar.appearance.selectedTintColor
+                item.setBackgroundImage(RichEditorToolbar.appearance.selectedBackgroundImage, for: .normal, barMetrics: .default)
             } else {
-                item.tintColor = UIColor.gray
+                item.tintColor = RichEditorToolbar.appearance.tintColor
+                item.setBackgroundImage(RichEditorToolbar.appearance.backgroundImage, for: .normal, barMetrics: .default)
             }
         }
     }
