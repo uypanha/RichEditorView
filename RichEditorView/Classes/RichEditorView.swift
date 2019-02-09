@@ -589,18 +589,21 @@ extension RichEditorView {
     }
     
     private func setMetionUsers(_ datasource: RichEditorMentionPeopleDataSource) {
-        var jsonData: String = "["
         let numberOfItem = datasource.numberOfItems(self)
-        for index in 0...(numberOfItem - 1) {
-            var userDic = datasource.richEditor(self, jsonUserDataFor: index)
-            userDic["valueToDisplay"] = datasource.richEditor(self, htmlItemToDisplayFor: index)
-            userDic["selectTemplate"] = datasource.richEditor(self, selectedHtmlTemplateFor: index)
-            if let jsonString = self.convertToJsonString(userDic) {
-                jsonData += jsonString + (index == (numberOfItem - 1) ? "" : ",")
+        if numberOfItem > 0 {
+            var jsonData: String = "["
+            let numberOfItem = datasource.numberOfItems(self)
+            for index in 0...(numberOfItem - 1) {
+                var userDic = datasource.richEditor(self, jsonUserDataFor: index)
+                userDic["valueToDisplay"] = datasource.richEditor(self, htmlItemToDisplayFor: index)
+                userDic["selectTemplate"] = datasource.richEditor(self, selectedHtmlTemplateFor: index)
+                if let jsonString = self.convertToJsonString(userDic) {
+                    jsonData += jsonString + (index == (numberOfItem - 1) ? "" : ",")
+                }
             }
+            jsonData += "]"
+            runJS("RE.setMentionUsers(\(jsonData))")
         }
-        jsonData += "]"
-        runJS("RE.setMentionUsers(\(jsonData))")
     }
     
     private func setLookUpKey(_ key: String?) {
