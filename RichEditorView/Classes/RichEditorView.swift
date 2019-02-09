@@ -619,7 +619,7 @@ extension RichEditorView {
         runJS("RE.setSelectTemplateKey('\(key)')")
     }
     
-    func reloadMentionPeople() {
+    public func reloadMentionPeople() {
         if let datasource = self.datasource as? RichEditorMentionPeopleDataSource {
             
             self.setMetionUsers(datasource)
