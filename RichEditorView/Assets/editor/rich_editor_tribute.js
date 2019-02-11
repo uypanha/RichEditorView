@@ -83,7 +83,7 @@ RE.remoteSearch = function(text, cb) {
     if (!(RE.mentionUsers == undefined || RE.mentionUsers.length == 0)) {
         users = RE.mentionUsers;
     }
-    users = users.filter(user => user[RE.lookupKey].toLowerCase().includes(text.toLowerCase()));
+    users = users.filter(user => user[RE.lookupKey].replace(/\s+/g, '').toLowerCase().includes(text.toLowerCase()));
     
     if (RE.limitTributeDisplay > 0) {
         users = users.slice(0, 4);
