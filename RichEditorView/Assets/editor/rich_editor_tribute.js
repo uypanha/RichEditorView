@@ -45,8 +45,8 @@ RE.setSelectTemplateKey = function(key) {
 }
 
 RE.prepareAtWho = function() {
-
-    if (!(RE.tribute === 'undefined')) {
+    
+    if (!(RE.tribute === undefined) && RE.tribute instanceof Tribute) {
         RE.tribute.detach(RE.editor);
     }
     
