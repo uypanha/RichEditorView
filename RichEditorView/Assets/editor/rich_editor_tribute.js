@@ -86,7 +86,7 @@ RE.remoteSearch = function(text, cb) {
     users = users.filter(user => user[RE.lookupKey].replace(/\s+/g, '').toLowerCase().includes(text.toLowerCase()));
     
     if (RE.limitTributeDisplay > 0) {
-        users = users.slice(0, 4);
+        users = users.slice(0, RE.limitTributeDisplay);
     }
     
     cb(users);
