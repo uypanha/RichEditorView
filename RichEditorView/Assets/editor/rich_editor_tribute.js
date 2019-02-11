@@ -58,6 +58,7 @@ RE.prepareAtWho = function() {
     }
     
     RE.tribute = new Tribute({
+        menuContainer: document.body,
         values: function (text, cb) {
             RE.remoteSearch(text, users => cb(users));
         },
