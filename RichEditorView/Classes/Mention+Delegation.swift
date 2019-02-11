@@ -18,4 +18,23 @@ public protocol RichEditorMentionPeopleDataSource: RichEditorDataSource {
     func richEditor(_ editor: RichEditorView, htmlItemToDisplayFor index: Int) -> String?
     
     func richEditor(_ editor: RichEditorView, selectedHtmlTemplateFor index: Int) -> String?
+    
+    func richEditorDisplayLimit(_ editor: RichEditorView) -> Int
+}
+
+extension RichEditorMentionPeopleDataSource {
+    
+    func richEditorDisplayLimit(_ editor: RichEditorView) -> Int {
+        return 0
+    }
+    
+    func richEditor(_ editor: RichEditorView, htmlItemToDisplayFor index: Int) -> String? {
+        return nil
+    }
+    
+    func richEditor(_ editor: RichEditorView, selectedHtmlTemplateFor index: Int) -> String? {
+        return nil
+    }
+    
+    
 }

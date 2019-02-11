@@ -18,6 +18,7 @@ RE.mentionUsers = [];
 RE.lookupKey = "key";
 RE.menuItemKeyToDisplay = "value";
 RE.selectTemplateKey = "template";
+RE.limitTributeDisplay = 0;
 
 RE.setMentionUsers = function(users) {
     console.log(users);
@@ -41,6 +42,12 @@ RE.setMenuItemToDisplayKey = function(key) {
 RE.setSelectTemplateKey = function(key) {
     if (typeof key === 'string' || key instanceof String) {
         RE.selectTemplateKey = key
+    }
+}
+
+RE.setLimitDisplayToMention = function(limit) {
+    if (Number.isInteger(limit)) {
+        RE.limitTributeDisplay = limit;
     }
 }
 
@@ -72,11 +79,17 @@ RE.prepareAtWho = function() {
 }
 
 RE.remoteSearch = function(text, cb) {
-    if (RE.mentionUsers == undefined || RE.mentionUsers.length == 0) {
-        cb([]);
-    } else {
-        cb(RE.mentionUsers);
+    var users = [];
+    if (!(RE.mentionUsers == undefined || RE.mentionUsers.length == 0)) {
+        users = RE.mentionUsers;
     }
+    users = users.filter(user => user[RE.lookupKey].toLowerCase().includes(text.toLowerCase()));
+    
+    if (RE.limitTributeDisplay > 0) {
+        users = users.slice(0, 4);
+    }
+    
+    cb(users);
 }
 
 // Editing Delegation and Callbacks

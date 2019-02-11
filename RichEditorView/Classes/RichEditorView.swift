@@ -621,6 +621,10 @@ extension RichEditorView {
         runJS("RE.setSelectTemplateKey('\(key)')")
     }
     
+    private func setLimitDisplayToMention(_ limit: Int) {
+        runJS("RE.setLimitDisplayToMention(\(limit))")
+    }
+    
     public func reloadMentionPeople() {
         if let datasource = self.datasource as? RichEditorMentionPeopleDataSource {
             
@@ -628,6 +632,7 @@ extension RichEditorView {
             self.setLookUpKey(datasource.richEditorKeyToLookUp(self))
             self.setMenuItemToDisplayKey("valueToDisplay")
             self.setSelectTemplateKey("selectTemplate")
+            self.setLimitDisplayToMention(datasource.richEditorDisplayLimit(self))
             runJS("RE.prepareAtWho()")
         }
     }
