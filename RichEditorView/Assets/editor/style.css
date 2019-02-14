@@ -48,6 +48,7 @@ div {
     position: absolute;
     top: 0px;
     color: #cccccc;
+    margin-top: inherit;
 }
 
 #editor {
