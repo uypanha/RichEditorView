@@ -519,6 +519,7 @@ public protocol RichEditorDataSource: class {}
             // If loading for the first time, we have to set the content HTML to be displayed
             if !isEditorLoaded {
                 isEditorLoaded = true
+                self.setEditorMargin(self.editorMargin)
                 html = contentHTML
                 isContentEditable = editingEnabledVar
                 placeholder = placeholderText
