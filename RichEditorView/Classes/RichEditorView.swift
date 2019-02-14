@@ -59,7 +59,7 @@ public protocol RichEditorDataSource: class {}
     /// Input accessory view to display over they keyboard.
     /// Defaults to nil
     open override var inputAccessoryView: UIView? {
-        get { return webView.cjw_inputAccessoryView }
+        get { return webView.inputAccessoryView }
         set { webView.cjw_inputAccessoryView = newValue }
     }
     
@@ -92,6 +92,12 @@ public protocol RichEditorDataSource: class {}
     open private(set) var editorHeight: Int = 0 {
         didSet {
             delegate?.richEditor?(self, heightDidChange: editorHeight)
+        }
+    }
+    
+    open var editorMargin: Int = 0 {
+        didSet {
+            self.setEditorMargin(editorMargin)
         }
     }
     
@@ -468,6 +474,10 @@ public protocol RichEditorDataSource: class {}
         if editorHeight != height {
             editorHeight = height
         }
+    }
+    
+    private func setEditorMargin(_ margin: Int) {
+        runJS("RE.setEditorMargin(\(margin))")
     }
     
     /// Scrolls the editor to a position where the caret is visible.

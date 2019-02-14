@@ -448,3 +448,9 @@ RE.getRelativeCaretYPosition = function() {
     
     return y;
 };
+
+RE.setEditorMargin = function(margin) {
+    if (Number.isInteger(margin)) {
+        $("editor").css('margin', margin+'px');
+    }
+}
