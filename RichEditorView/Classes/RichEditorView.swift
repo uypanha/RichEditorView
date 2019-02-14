@@ -59,7 +59,7 @@ public protocol RichEditorDataSource: class {}
     /// Input accessory view to display over they keyboard.
     /// Defaults to nil
     open override var inputAccessoryView: UIView? {
-        get { return webView.inputAccessoryView }
+        get { return webView.cjw_inputAccessoryView }
         set { webView.cjw_inputAccessoryView = newValue }
     }
     
