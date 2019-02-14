@@ -452,7 +452,5 @@ RE.getRelativeCaretYPosition = function() {
 RE.setEditorMargin = function(margin) {
     if (Number.isInteger(margin)) {
         $("#editor").css('margin', margin+'px');
-        $(".placeholder[placeholder]").after().css('margin-top', margin+'px');
-        $(".placeholder[placeholder]").after().css('margin-bottom', margin+'px');
     }
 }
