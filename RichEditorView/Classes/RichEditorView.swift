@@ -470,7 +470,7 @@ public protocol RichEditorDataSource: class {}
     
     private func updateHeight() {
         let heightString = runJS("document.getElementById('editor').clientHeight;")
-        let height = Int(heightString) ?? 0
+        let height = (Int(heightString) ?? 0 + (self.editorMargin * 2))
         if editorHeight != height {
             editorHeight = height
         }
