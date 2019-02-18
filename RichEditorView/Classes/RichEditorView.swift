@@ -138,7 +138,7 @@ public protocol RichEditorDataSource: class {}
     /// Fetches it from JS every time, so might be slow!
     private var clientHeight: Int {
         let heightString = runJS("document.getElementById('editor').clientHeight;")
-        return Int(heightString) ?? 0
+        return Int(heightString) ?? 0 + (self.editorMargin * 2)
     }
     
     // MARK: Initialization
