@@ -49,6 +49,7 @@ div {
     top: 0px;
     color: #cccccc;
     margin-top: inherit;
+    padding-top: inherit;
 }
 
 #editor {
