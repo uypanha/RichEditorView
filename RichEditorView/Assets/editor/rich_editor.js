@@ -277,7 +277,6 @@ RE.setBlockquote = function() {
 RE.insertHTML = function(html) {
     RE.restorerange();
     document.execCommand('insertHTML', false, html);
-    RE.enabledEditingItems();
 };
 
 RE.insertLink = function(url, title) {
