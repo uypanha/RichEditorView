@@ -564,6 +564,7 @@ public protocol RichEditorDataSource: class {}
                 lineHeight = DefaultInnerLineHeight
                 
                 delegate?.richEditorDidLoad?(self)
+                reloadMentionPeople()
             }
             updateHeight()
         }
@@ -617,7 +618,7 @@ public protocol RichEditorDataSource: class {}
 }
 
 // MARK: - Mention People handlers
-extension RichEditorView {
+public extension RichEditorView {
 
     private func convertToJsonString(_ data: [String: Any]) -> String? {
         do {
@@ -665,7 +666,7 @@ extension RichEditorView {
         runJS("RE.setLimitDisplayToMention(\(limit))")
     }
 
-    public func reloadMentionPeople() {
+    func reloadMentionPeople() {
         if let datasource = self.datasource as? RichEditorMentionPeopleDataSource {
 
             self.setMetionUsers(datasource)
