@@ -170,7 +170,7 @@ public enum RichEditorDefaultOption: RichEditorOption {
         case .underline: return .underline
         case .textColor: return .textColor
         case .textBackgroundColor: return .textBackgroundColor
-        case .header(let h): return .header
+        case .header(_): return .header
         case .indent: return .indent
         case .outdent: return .outdent
         case .orderedList: return .orderedList
