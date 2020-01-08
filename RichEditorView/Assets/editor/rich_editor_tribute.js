@@ -180,13 +180,17 @@ RE.enabledEditingItems = function(e) {
         
         // Background Color
         var bgColor = t.css('backgroundColor');
-        if (bgColor.length != 0 && bgColor != 'rgba(0, 0, 0, 0)' && bgColor != 'rgb(0, 0, 0)' && bgColor != 'transparent') {
-            items.push('backgroundColor');
+        if (bgColor != undefined) {
+            if (bgColor.length != 0 && bgColor != 'rgba(0, 0, 0, 0)' && bgColor != 'rgb(0, 0, 0)' && bgColor != 'transparent') {
+                items.push('backgroundColor');
+            }
         }
         // Text Color
         var textColor = t.css('color');
-        if (textColor.length != 0 && textColor != 'rgba(0, 0, 0, 0)' && textColor != 'rgb(0, 0, 0)' && textColor != 'transparent') {
-            items.push('textColor');
+        if (textColor != undefined) {
+            if (textColor.length != 0 && textColor != 'rgba(0, 0, 0, 0)' && textColor != 'rgb(0, 0, 0)' && textColor != 'transparent') {
+                items.push('textColor');
+            }
         }
 		
         // Link

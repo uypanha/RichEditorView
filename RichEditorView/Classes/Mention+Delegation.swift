@@ -35,6 +35,4 @@ extension RichEditorMentionPeopleDataSource {
     func richEditor(_ editor: RichEditorView, selectedHtmlTemplateFor index: Int) -> String? {
         return nil
     }
-    
-    
 }

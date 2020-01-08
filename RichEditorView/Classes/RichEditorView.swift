@@ -388,10 +388,9 @@ public protocol RichEditorDataSource: class {}
         }
     }
     
-    
     // MARK: UIWebViewDelegate
     
-    public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         
         // Handle pre-defined editor actions
         let callbackPrefix = "re-callback://"
