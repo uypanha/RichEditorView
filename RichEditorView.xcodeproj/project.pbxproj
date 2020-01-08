@@ -15,6 +15,7 @@
 		DC14E772220AC91700D5143A /* RichEditorToolbarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC14E771220AC91700D5143A /* RichEditorToolbarAppearance.swift */; };
 		DC660FFD2203FDE1009A520D /* tribute in Resources */ = {isa = PBXBuildFile; fileRef = DC660FFC2203FDE1009A520D /* tribute */; };
 		DC661003220450B3009A520D /* Mention+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661002220450B3009A520D /* Mention+Delegation.swift */; };
+		DCE164FD23C5D2DE004919A9 /* RichEditorWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE164FC23C5D2DD004919A9 /* RichEditorWebView.swift */; };
 		FBA6AAFF1AD3EC9F00721644 /* RichEditorView.h in Headers */ = {isa = PBXBuildFile; fileRef = FBA6AAFE1AD3EC9F00721644 /* RichEditorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FBA6AB051AD3EC9F00721644 /* RichEditorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA6AAF91AD3EC9F00721644 /* RichEditorView.framework */; };
 		FBA6AB0C1AD3EC9F00721644 /* RichEditorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA6AB0B1AD3EC9F00721644 /* RichEditorViewTests.swift */; };
@@ -97,6 +98,7 @@
 		DC14E771220AC91700D5143A /* RichEditorToolbarAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RichEditorToolbarAppearance.swift; path = Classes/RichEditorToolbarAppearance.swift; sourceTree = "<group>"; };
 		DC660FFC2203FDE1009A520D /* tribute */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tribute; sourceTree = "<group>"; };
 		DC661002220450B3009A520D /* Mention+Delegation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Mention+Delegation.swift"; path = "Classes/Mention+Delegation.swift"; sourceTree = "<group>"; };
+		DCE164FC23C5D2DD004919A9 /* RichEditorWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RichEditorWebView.swift; path = Classes/RichEditorWebView.swift; sourceTree = "<group>"; };
 		FBA6AAF91AD3EC9F00721644 /* RichEditorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RichEditorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA6AAFD1AD3EC9F00721644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBA6AAFE1AD3EC9F00721644 /* RichEditorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RichEditorView.h; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				39FC98F91DC788A1008FE5DD /* String+Extensions.swift */,
 				39FC98FA1DC788A1008FE5DD /* UIColor+Extensions.swift */,
 				947A71A01C0F9DED00BDF9FC /* UIView+Responder.swift */,
+				DCE164FC23C5D2DD004919A9 /* RichEditorWebView.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				DC661003220450B3009A520D /* Mention+Delegation.swift in Sources */,
 				39FC98FC1DC788A1008FE5DD /* UIColor+Extensions.swift in Sources */,
 				39FC98FB1DC788A1008FE5DD /* String+Extensions.swift in Sources */,
+				DCE164FD23C5D2DE004919A9 /* RichEditorWebView.swift in Sources */,
 				947A71A11C0F9DED00BDF9FC /* UIView+Responder.swift in Sources */,
 				DC14E772220AC91700D5143A /* RichEditorToolbarAppearance.swift in Sources */,
 			);
@@ -584,7 +588,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -627,7 +631,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
