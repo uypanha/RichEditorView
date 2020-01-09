@@ -562,10 +562,10 @@ public protocol RichEditorDataSource: class {}
                 contentEditable = editingEnabledVar
                 placeholder = placeholderText
                 lineHeight = DefaultInnerLineHeight
-                editorMargin = editorMargin
+                runJS("RE.setEditorMargin(\(self.editorMargin))")
+                reloadMentionPeople()
                 
                 delegate?.richEditorDidLoad?(self)
-                reloadMentionPeople()
             }
             updateHeight()
         }
