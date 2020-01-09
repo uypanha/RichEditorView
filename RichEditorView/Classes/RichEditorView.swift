@@ -562,6 +562,7 @@ public protocol RichEditorDataSource: class {}
                 contentEditable = editingEnabledVar
                 placeholder = placeholderText
                 lineHeight = DefaultInnerLineHeight
+                editorMargin = editorMargin
                 
                 delegate?.richEditorDidLoad?(self)
                 reloadMentionPeople()
