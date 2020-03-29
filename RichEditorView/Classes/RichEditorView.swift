@@ -79,6 +79,9 @@ public protocol RichEditorDataSource: class {}
         didSet { contentEditable = editingEnabled }
     }
     
+    /// The private internal tap gesture recognizer used to detect taps and focus the editor
+    private let tapRecognizer = UITapGestureRecognizer()
+    
     /// The content HTML of the text being displayed.
     /// Is continually updated as the text is being edited.
     open private(set) var contentHTML: String = "" {
@@ -172,6 +175,10 @@ public protocol RichEditorDataSource: class {}
             let url = URL(fileURLWithPath: filePath, isDirectory: false)
             webView.loadFileURL(url, allowingReadAccessTo: url.deletingLastPathComponent())
         }
+        
+        tapRecognizer.addTarget(self, action: #selector(viewWasTapped))
+        tapRecognizer.delegate = self
+        addGestureRecognizer(tapRecognizer)
     }
     
     // MARK: - Rich Text Editing
@@ -597,10 +604,22 @@ public protocol RichEditorDataSource: class {}
                 
                 self.delegate?.richEditor?(self, handle: action)
             }
+        } else if method.hasPrefix("selectedItems/") {
+            let className = method.replacingOccurrences(of: "selectedItems/", with: "")
+            self.updateToolBarWithButtonName(className)
         }
     }
     
     // MARK: - Responder Handling
+    
+    /// Called by the UITapGestureRecognizer when the user taps the view.
+    /// If we are not already the first responder, focus the editor.
+    @objc private func viewWasTapped() {
+        if !webView.containsFirstResponder {
+            let point = tapRecognizer.location(in: webView)
+            focus(at: point)
+        }
+    }
     
     override open func becomeFirstResponder() -> Bool {
         if !webView.isFirstResponder {
