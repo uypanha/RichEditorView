@@ -255,7 +255,7 @@ public protocol RichEditorDataSource: class {}
     /// Whether or not the selection has a type specifically of "Range".
     public func hasRangeSelection(handler: @escaping (Bool) -> Void) {
         runJS("RE.rangeSelectionExists()") { r in
-            handler(r == "true" ? true : false)
+            handler((r == "1" || r == "true") ? true : false)
         }
     }
     
