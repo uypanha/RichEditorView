@@ -262,7 +262,7 @@ public protocol RichEditorDataSource: class {}
     /// Whether or not the selection has a type specifically of "Range" or "Caret".
     public func hasRangeOrCaretSelection(handler: @escaping (Bool) -> Void) {
         runJS("RE.rangeOrCaretSelectionExists()") { r in
-            handler(r == "true" ? true : false)
+            handler((r == 1 || r == "true") ? true : false)
         }
     }
     
