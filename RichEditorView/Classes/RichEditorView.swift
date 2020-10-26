@@ -169,6 +169,8 @@ public protocol RichEditorDataSource: class {}
         webView.scrollView.bounces = true
         webView.scrollView.delegate = self
         webView.scrollView.clipsToBounds = false
+        webView.backgroundColor = .clear
+        webView.isOpaque = false
         addSubview(webView)
         
         if let filePath = Bundle(for: RichEditorView.self).path(forResource: "rich_editor", ofType: "html") {
