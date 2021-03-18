@@ -65,7 +65,7 @@ public protocol RichEditorDataSource: class {}
     }
     
     /// The internal WKWebView that is used to display the text.
-    open private(set) var webView: RichEditorWebView
+    public private(set) var webView: RichEditorWebView
     
     /// Whether or not scroll is enabled on the view.
     open var isScrollEnabled: Bool = true {
