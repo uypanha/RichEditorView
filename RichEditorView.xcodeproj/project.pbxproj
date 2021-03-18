@@ -97,7 +97,7 @@
 		DC14E771220AC91700D5143A /* RichEditorToolbarAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RichEditorToolbarAppearance.swift; path = Classes/RichEditorToolbarAppearance.swift; sourceTree = "<group>"; };
 		DC660FFC2203FDE1009A520D /* tribute */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tribute; sourceTree = "<group>"; };
 		DC661002220450B3009A520D /* Mention+Delegation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Mention+Delegation.swift"; path = "Classes/Mention+Delegation.swift"; sourceTree = "<group>"; };
-		DC6F485A260329CE00D80F41 /* WKWebView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WKWebView+Extension.swift"; sourceTree = "<group>"; };
+		DC6F485A260329CE00D80F41 /* WKWebView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WKWebView+Extension.swift"; path = "Classes/WKWebView+Extension.swift"; sourceTree = "<group>"; };
 		DCE164FC23C5D2DD004919A9 /* RichEditorWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RichEditorWebView.swift; path = Classes/RichEditorWebView.swift; sourceTree = "<group>"; };
 		FBA6AAF91AD3EC9F00721644 /* RichEditorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RichEditorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA6AAFD1AD3EC9F00721644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
