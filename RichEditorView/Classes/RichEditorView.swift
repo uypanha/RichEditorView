@@ -155,6 +155,7 @@ public protocol RichEditorDataSource: class {}
     
     required public init?(coder aDecoder: NSCoder) {
         webView = RichEditorWebView()
+        webView.keyboardDisplayRequiresUserAction = false
         super.init(coder: aDecoder)
         setup()
     }
