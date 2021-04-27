@@ -93,6 +93,10 @@ RE.callback = function(method) {
     RE.runCallbackQueue();
 };
 
+RE.setInputEnabled = function(inputEnabled) {
+  RE.editor.contentEditable = String(inputEnabled);
+}
+
 RE.setHtml = function(contents) {
     var tempWrapper = document.createElement('div');
     tempWrapper.innerHTML = contents;

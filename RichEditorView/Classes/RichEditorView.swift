@@ -490,11 +490,11 @@ public protocol RichEditorDataSource: class {}
         didSet {
             editingEnabledVar = contentEditable
             if isEditorLoaded {
-                let value = (contentEditable ? "true" : "false")
-                runJS("RE.editor.contentEditable = \(value)")
+                runJS("RE.setInputEnabled(\(contentEditable));")
             }
         }
     }
+    
     private func isContentEditable(handler: @escaping (Bool) -> Void) {
         if isEditorLoaded {
             // to get the "editable" value is a different property, than to disable it
